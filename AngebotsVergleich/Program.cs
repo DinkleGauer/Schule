@@ -12,9 +12,7 @@ namespace AngebotsVergleich
         {
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
-            Console.WriteLine("Wat machen wa hier denn?????");
-            Console.WriteLine("BOOOOOOO!");
-            Console.ReadLine();
+
         }
     }
 }
