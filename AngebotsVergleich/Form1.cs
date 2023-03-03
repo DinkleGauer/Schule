@@ -4,7 +4,7 @@ namespace AngebotsVergleich
     {
         public Form1()
         {
-            InitializeComponent();http://go.ecademy-learning.com/lnk/CAAAAxyMFkEAAAAAAAAAAK84jM8AAVQQeOwAAAAAAAniIQBi5SJdI9HLckNSSvu8R9yHU7iYHgAJXHc/2/v9Gsk35SYZA8LJmqovnBIg/aHR0cHM6Ly9hcHAuZWNhZGVteS1sZWFybmluZy5jb20
+            InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
