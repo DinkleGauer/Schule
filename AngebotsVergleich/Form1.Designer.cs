@@ -56,7 +56,8 @@
         }
 
         #endregion
-
+        //s
         private Label label1;
+        
     }
 }
