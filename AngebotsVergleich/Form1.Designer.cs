@@ -27,7 +27,7 @@
         ///  Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
-
+        // Funkt es???
         /// <summary>
         ///  Clean up any resources being used.
         /// </summary>
