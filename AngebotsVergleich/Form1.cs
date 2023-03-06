@@ -14,7 +14,7 @@ namespace AngebotsVergleich
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+                
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -53,9 +53,10 @@ namespace AngebotsVergleich
             return "0";
         }
 
-        Angebot[] AngebotNEU = new Angebot[1];
+        Angebot[] AngebotNEU = new Angebot[0];
         private void Erstellen_click(object sender, EventArgs e)
         {
+            Array.Resize(ref AngebotNEU, AngebotNEU.Length + 1);
             // Daten bekommen
             for (int i = AngebotNEU.Length-1; i < AngebotNEU.Length; i++)
             {
@@ -77,10 +78,28 @@ namespace AngebotsVergleich
             }
             System.Windows.Forms.MessageBox.Show("Angebot angelegt");
             Felder_Leeren();
-            Array.Resize(ref AngebotNEU, AngebotNEU.Length +1);
         }
 
         private void Vergleichen_Click(object sender, EventArgs e)
+        {
+        foreach (Angebot Iteration in AngebotNEU)
+            {
+                float zieleinkaufspreis;
+                float bareinkaufspreis;
+                float bezugspreis;
+
+                zieleinkaufspreis = Iteration.Listeneinkaufspreis - ((Iteration.Listeneinkaufspreis / 100) * Iteration.Lieferrabatt);
+                bareinkaufspreis = zieleinkaufspreis - ((zieleinkaufspreis / 100) * Iteration.Lieferrabatt);
+                bezugspreis = bareinkaufspreis + Iteration.Bezugspreis;
+                Iteration.Wert = bezugspreis;
+            }
+            Angebot AngebotMin = AngebotNEU.MinBy(x => x.Wert);
+            BindingSource binding2 = new BindingSource();
+            binding2.DataSource = AngebotMin;
+            dataGridView2.DataSource = binding2;
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
