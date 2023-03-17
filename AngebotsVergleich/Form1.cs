@@ -1,12 +1,14 @@
 using System.Data.SqlClient;
 
 
+
+
 namespace AngebotsVergleich
 {
 
     public partial class Form1 : Form
     {
-        
+        #region unwichtiges
         public Form1()
         {
             InitializeComponent();
@@ -21,8 +23,8 @@ namespace AngebotsVergleich
         {
 
         }
-
-        private void Felder_Leeren()
+        #endregion
+        private void Felder_Leeren() // Leert eingabe Felder
         {
             textBezugspreis.Clear();
             textLieferRabatt.Clear();
@@ -34,7 +36,7 @@ namespace AngebotsVergleich
 
         
 
-        private string Inhalt_pruefen(string Inhalt, string Aufruf)
+        private string Inhalt_pruefen(string Inhalt, string Aufruf) // Prueft Inhalt auf Logik 
         {
             int Ergebnis;
             bool success = int.TryParse(Inhalt, out Ergebnis);
@@ -53,14 +55,14 @@ namespace AngebotsVergleich
             return "0";
         }
 
-        Angebot[] AngebotNEU = new Angebot[0];
+        Angebot[] AngebotNEU = new Angebot[0]; // Objekt Deklariert
         private void Erstellen_click(object sender, EventArgs e)
         {
-            Array.Resize(ref AngebotNEU, AngebotNEU.Length + 1);
+            Array.Resize(ref AngebotNEU, AngebotNEU.Length + 1); // Array größe inkrementiert 
             // Daten bekommen
             for (int i = AngebotNEU.Length-1; i < AngebotNEU.Length; i++)
             {
-                AngebotNEU[i] = new Angebot
+                AngebotNEU[i] = new Angebot // füllen von Werten 
                 {
                     Firma = textFirma.Text,
                     Bezugspreis = int.Parse(textBezugspreis.Text),
@@ -70,7 +72,7 @@ namespace AngebotsVergleich
                     SonstRabatt = int.Parse(Inhalt_pruefen(textSonstRabatt.Text, textSonstRabatt.Name))
                 };
 
-
+                
                 // Füllen der Tabelle            
                 BindingSource binding = new BindingSource();
                 binding.DataSource = AngebotNEU;
@@ -80,7 +82,7 @@ namespace AngebotsVergleich
             Felder_Leeren();
         }
 
-        private void Vergleichen_Click(object sender, EventArgs e)
+        private void Vergleichen_Click(object sender, EventArgs e) // Mathe
         {
         foreach (Angebot Iteration in AngebotNEU)
             {
@@ -88,15 +90,16 @@ namespace AngebotsVergleich
                 float bareinkaufspreis;
                 float bezugspreis;
 
+                // Formel
                 zieleinkaufspreis = Iteration.Listeneinkaufspreis - ((Iteration.Listeneinkaufspreis / 100) * Iteration.Lieferrabatt);
                 bareinkaufspreis = zieleinkaufspreis - ((zieleinkaufspreis / 100) * Iteration.Lieferrabatt);
                 bezugspreis = bareinkaufspreis + Iteration.Bezugspreis;
                 Iteration.Wert = bezugspreis;
             }
-            Angebot AngebotMin = AngebotNEU.MinBy(x => x.Wert);
+            Angebot AngebotMin = AngebotNEU.MinBy(x => x.Wert); // Kleinstes Angebot
             BindingSource binding2 = new BindingSource();
             binding2.DataSource = AngebotMin;
-            dataGridView2.DataSource = binding2;
+            dataGridView2.DataSource = binding2; // Werte für die andere Tabelle
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace AngebotsVergleich
 {
-    public class Angebot
+    public class Angebot 
     {
         public string Firma { get; set; }
         public float Listeneinkaufspreis { get; set; }
@@ -15,7 +15,7 @@
 
         }
         public Angebot(string Firma , int Listeneinkaufspreis, int Lieferrabatt, int Lieferskonto, int Bezugspreis, int SonstRabatt, float Wert)
-        {
+        {   // Konstruktur
             Firma = Firma;
             Listeneinkaufspreis = Listeneinkaufspreis;
             Lieferrabatt = Lieferrabatt;
@@ -25,13 +25,9 @@
             Wert = Wert;
         }
     }
-    partial class Form1
+    partial class Form1 //Automatisch erstellter code
     {
-        /// <summary>
-        ///  Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
-        // Funkt es???
         /// <summary>
         ///  Clean up any resources being used.
         /// </summary>
@@ -223,7 +219,6 @@
             this.dataGridView2.RowTemplate.Height = 29;
             this.dataGridView2.Size = new System.Drawing.Size(309, 90);
             this.dataGridView2.TabIndex = 28;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // Form1
             // 
