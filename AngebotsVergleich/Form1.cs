@@ -80,6 +80,25 @@ namespace AngebotsVergleich
             }
             System.Windows.Forms.MessageBox.Show("Angebot angelegt");
             Felder_Leeren();
+            SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=AngebotVergleich;");
+
+            SqlCommand selectCommand = new SqlCommand("SELECT Firma FROM dbo.Angebot",conn);
+            selectCommand.Connection.Open();
+            SqlDataReader sqlReader;
+            try
+            {
+                sqlReader = selectCommand.ExecuteReader();
+                if (sqlReader.Read())
+                {
+                    SqlLabel.Text = sqlReader.GetString(0);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Error occurred while attempting SELECT.");
+            }
+            
+                selectCommand.Connection.Close();
         }
 
         private void Vergleichen_Click(object sender, EventArgs e) // Mathe

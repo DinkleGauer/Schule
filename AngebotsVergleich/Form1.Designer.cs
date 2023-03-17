@@ -66,6 +66,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.SqlLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -220,11 +221,21 @@
             this.dataGridView2.Size = new System.Drawing.Size(309, 90);
             this.dataGridView2.TabIndex = 28;
             // 
+            // SqlLabel
+            // 
+            this.SqlLabel.AutoSize = true;
+            this.SqlLabel.Location = new System.Drawing.Point(-3, 433);
+            this.SqlLabel.Name = "SqlLabel";
+            this.SqlLabel.Size = new System.Drawing.Size(188, 20);
+            this.SqlLabel.TabIndex = 29;
+            this.SqlLabel.Text = "Datenbank Anbindung Test";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 451);
+            this.Controls.Add(this.SqlLabel);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textSonstRabatt);
@@ -270,5 +281,6 @@
         private Label label5;
         private Button button1;
         private DataGridView dataGridView2;
+        private Label SqlLabel;
     }
 }
