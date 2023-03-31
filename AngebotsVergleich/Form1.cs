@@ -33,9 +33,7 @@ namespace AngebotsVergleich
             textListenPreis.Clear();
             textSonstRabatt.Clear();
         }
-
         
-
         private string Inhalt_pruefen(string Inhalt, string Aufruf) // Prueft Inhalt auf Logik 
         {
             int Ergebnis;
@@ -80,6 +78,7 @@ namespace AngebotsVergleich
             }
             System.Windows.Forms.MessageBox.Show("Angebot angelegt");
             Felder_Leeren();
+            #region sql
             SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=AngebotVergleich;");
 
             SqlCommand selectCommand = new SqlCommand("SELECT Firma FROM dbo.Angebot",conn);
@@ -97,8 +96,8 @@ namespace AngebotsVergleich
             {
                 Console.WriteLine("Error occurred while attempting SELECT.");
             }
-            
                 selectCommand.Connection.Close();
+            #endregion
         }
 
         private void Vergleichen_Click(object sender, EventArgs e) // Mathe
